@@ -1,11 +1,14 @@
 box::use(
-  shiny[NS, div, moduleServer, reactive, verbatimTextOutput, renderPrint],
+  shiny[NS, div, moduleServer, reactive, verbatimTextOutput, renderPrint, a],
   shiny.router[get_query_param]
 )
 
 ui <- function(id) {
   ns <- NS(id)
-  verbatimTextOutput(ns("key"))
+  div(
+    verbatimTextOutput(ns("key")),
+    a("test", href="http://google.com", target="_blank")
+  )
 }
 
 server <- function(id) {
